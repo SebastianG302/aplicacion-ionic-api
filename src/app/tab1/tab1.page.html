@@ -1,17 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      ¿Cómo funciona?
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content fullscreen class="ion-padding-horizontal">
+  <ion-text>
+    <h4>Obtener países (GET)</h4>
+  </ion-text>
+  <p>En la Tab 2 se podrán listar todos los países del mundo y mostrar información como población, nombres, capital, etc. Haciendo una busqueda del país en inglés o por su nombre oficial,
+    por medio de "RestCountriesAPI".</p>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-text>
+    <h4>Crear nuevo producto (POST)</h4>
+  </ion-text>
+  <p>En la Tab 3 se podrá crear un nuevo artículo especificando el título, valor, categoría, etc en la "FakeStoreAPI" de
+    Platzi.</p>
 </ion-content>

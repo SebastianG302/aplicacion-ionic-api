@@ -1,17 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Buscar país
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!-- Input del pais -->
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form [formGroup]="formulario">
+    <ion-item>
+      <ion-label>Buscar país:</ion-label>
+      <ion-input type="text" placeholder="En inglés o su nombre oficial" formControlName="busqueda"></ion-input>
+    </ion-item>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <ion-button expand="full" (click)="buscar()">Enviar</ion-button>
+  </form>
+
+  <!-- Tarjetas de paises -->
+  <div *ngIf="respuesta" class="ion-padding-horizontal">
+
+    <ion-card *ngFor="let pais of respuesta; let i = index">
+      <ion-card-header>
+        <ion-card-title>{{ pais.name.official }}</ion-card-title>
+        <ion-card-subtitle>Nombre común: {{pais.name.common}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        - Población: {{ pais.population | number}}<br>
+        - Región: {{ pais.region}}<br>
+        - Capital: {{ pais.capital}}<br>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

@@ -1,17 +1,81 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 3
+      Crear nuevo producto
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
+<!-- Contenido principal -->
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Formulario -->
+  <form [formGroup]="formulario">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input color="tertiary" type="text" formControlName="title"></ion-input>
+    </ion-item>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input type="number" formControlName="price"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input type="text" formControlName="description"></ion-input>
+    </ion-item>
+
+    <!-- Input Radio -->
+    <ion-list>
+      <ion-radio-group value="Categoria" formControlName="categoryId">
+        <ion-list-header>
+          <ion-label>Categoría</ion-label>
+        </ion-list-header>
+
+        <ion-item>
+          <ion-label>Clothes</ion-label>
+          <ion-radio type="number" slot="start" color="success" value=1></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Electronics</ion-label>
+          <ion-radio slot="start" color="success" value=2></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Furniture</ion-label>
+          <ion-radio slot="start" color="success" value=3></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Shoes</ion-label>
+          <ion-radio slot="start" color="success" value=4></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Others</ion-label>
+          <ion-radio slot="start" color="success" value=5></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-button expand="full" (click)="guardar()">Enviar</ion-button>
+  </form>
+
+  <!-- Contenido que se muestra si ho hay error -->
+  <div *ngIf="respuesta" class="ion-padding-horizontal">
+    <ion-text>
+      <h4>
+        ¡Se ha guardado correctamente en el Id: {{respuesta.id}}!
+        <br>
+        <br>
+        Respuesta:
+      </h4>
+    </ion-text>
+    <p>Id: {{respuesta.id}}</p>
+    <p>Title: {{respuesta.title}}</p>
+    <p>Price: {{respuesta.price}}</p>
+    <p>Description: {{respuesta.description}}</p>
+    <p>CategoryId: {{respuesta.category.id}}</p>
+  </div>
 </ion-content>
